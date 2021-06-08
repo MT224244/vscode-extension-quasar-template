@@ -1,0 +1,36 @@
+// See https://go.microsoft.com/fwlink/?LinkId=733558
+// for the documentation about the tasks.json format
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "watch",
+            "problemMatcher": "$tsc-watch",
+            "label": "npm: watch",
+            "isBackground": true,
+            "presentation": {
+                "reveal": "never"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "npm",
+            "script": "compile:vue",
+            "group": "build",
+            "problemMatcher": [],
+            "label": "npm: compile:vue",
+            "detail": "webpack -c custom_editor/webpack.config.js"
+        },
+        {
+            "label": "Build",
+            "dependsOn": [
+                "npm: compile:vue",
+                "npm: watch"
+            ]
+        }
+    ]
+}
